@@ -3,9 +3,9 @@ package app
 import (
 	"net/http"
 
+	thttp "seller-metrics-server/internal/transport/http"
+	"seller-metrics-server/internal/usecase"
 	mem "seller-metrics-server/storage/memory"
-	thttp "seller-metrics-server/transport/http"
-	"seller-metrics-server/usecase"
 )
 
 func NewHTTPServer() http.Handler {
@@ -14,9 +14,11 @@ func NewHTTPServer() http.Handler {
 
 	metricsService := usecase.NewMetricsService(sellerRepo, orderRepo)
 	sellerService := usecase.NewSellerService(sellerRepo, metricsService)
+	orderService := usecase.NewOrderService(orderRepo, sellerRepo)
 
 	sellerHandler := thttp.NewSellerHandler(sellerService)
 	metricsHandler := thttp.NewMetricsHandler(metricsService)
+	orderHandler := thttp.NewOrderHandler(orderService)
 
-	return thttp.NewRouter(sellerHandler, metricsHandler)
+	return thttp.NewRouter(sellerHandler, metricsHandler, orderHandler)
 }

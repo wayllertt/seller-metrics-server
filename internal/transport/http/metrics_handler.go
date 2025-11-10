@@ -4,7 +4,7 @@ import (
 	stdhttp "net/http"
 	"strconv"
 
-	"seller-metrics-server/usecase"
+	"seller-metrics-server/internal/usecase"
 )
 
 type MetricsHandler struct {

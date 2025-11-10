@@ -3,7 +3,7 @@ package transporthttp
 import (
 	stdhttp "net/http"
 
-	"seller-metrics-server/usecase"
+	"seller-metrics-server/internal/usecase"
 )
 
 type SellerHandler struct {
