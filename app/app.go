@@ -3,9 +3,9 @@ package app
 import (
 	"net/http"
 
-	mem "seller-metrics/internal/storage/memory"
-	thttp "seller-metrics/internal/transport/http"
-	"seller-metrics/internal/usecase"
+	mem "seller-metrics-server/storage/memory"
+	thttp "seller-metrics-server/transport/http"
+	"seller-metrics-server/usecase"
 )
 
 func NewHTTPServer() http.Handler {

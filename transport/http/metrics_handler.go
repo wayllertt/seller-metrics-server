@@ -1,10 +1,10 @@
-package http
+package transporthttp
 
 import (
-	"net/http"
+	stdhttp "net/http"
 	"strconv"
 
-	"seller-metrics/internal/usecase"
+	"seller-metrics-server/usecase"
 )
 
 type MetricsHandler struct {
@@ -15,23 +15,23 @@ func NewMetricsHandler(m *usecase.MetricsService) *MetricsHandler {
 	return &MetricsHandler{metrics: m}
 }
 
-func (h *MetricsHandler) GetBySellerID(w http.ResponseWriter, r *http.Request) {
+func (h *MetricsHandler) GetBySellerID(w stdhttp.ResponseWriter, r *stdhttp.Request) {
 	ctx := r.Context()
 	idStr := r.URL.Query().Get("seller_id")
 	if idStr == "" {
-		http.Error(w, "seller_id is required", http.StatusBadRequest)
+		stdhttp.Error(w, "seller_id is required", stdhttp.StatusBadRequest)
 		return
 	}
 
 	id, err := strconv.Atoi(idStr)
 	if err != nil {
-		http.Error(w, "invalid seller_id", http.StatusBadRequest)
+		stdhttp.Error(w, "invalid seller_id", stdhttp.StatusBadRequest)
 		return
 	}
 
 	metrics, err := h.metrics.CalculateForSeller(ctx, id)
 	if err != nil {
-		http.Error(w, err.Error(), http.StatusInternalServerError)
+		stdhttp.Error(w, err.Error(), stdhttp.StatusInternalServerError)
 		return
 	}
 

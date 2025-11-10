@@ -1,10 +1,10 @@
-package api
+package main
 
 import (
 	"log"
 	"net/http"
 
-	"seller-metrics/app/app"
+	"seller-metrics-server/app"
 )
 
 func main() {

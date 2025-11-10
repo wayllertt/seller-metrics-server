@@ -1,10 +1,9 @@
-package http
+package transporthttp
 
 import (
-	"encoding/json"
-	"net/http"
+	stdhttp "net/http"
 
-	"seller-metrics/internal/usecase"
+	"seller-metrics-server/usecase"
 )
 
 type SellerHandler struct {
@@ -15,11 +14,11 @@ func NewSellerHandler(s *usecase.SellerService) *SellerHandler {
 	return &SellerHandler{sellerService: s}
 }
 
-func (h *SellerHandler) ListWithMetrics(w http.ResponseWriter, r *http.Request) {
+func (h *SellerHandler) ListWithMetrics(w stdhttp.ResponseWriter, r *stdhttp.Request) {
 	ctx := r.Context()
 	data, err := h.sellerService.ListWithMetrics(ctx)
 	if err != nil {
-		http.Error(w, err.Error(), http.StatusInternalServerError)
+		stdhttp.Error(w, err.Error(), stdhttp.StatusInternalServerError)
 		return
 	}
 	writeJSON(w, data)

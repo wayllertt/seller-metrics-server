@@ -4,7 +4,7 @@ import (
 	"context"
 	"sync"
 
-	"seller-metrics/internal/domain"
+	"seller-metrics-server/internal/domain"
 )
 
 type OrderRepoMemory struct {

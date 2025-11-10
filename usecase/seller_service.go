@@ -3,7 +3,7 @@ package usecase
 import (
 	"context"
 
-	"seller-metrics/internal/domain"
+	"seller-metrics-server/internal/domain"
 )
 
 type SellerService struct {

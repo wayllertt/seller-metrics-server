@@ -12,7 +12,7 @@ type MetricsService struct {
 	orders  domain.OrderRepository
 }
 
-func NewMetricsService(orderRepo domain.OrderRepository, sellerRepo domain.SellerRepository) *MetricsService {
+func NewMetricsService(sellerRepo domain.SellerRepository, orderRepo domain.OrderRepository) *MetricsService {
 	return &MetricsService{
 		sellers: sellerRepo,
 		orders:  orderRepo,

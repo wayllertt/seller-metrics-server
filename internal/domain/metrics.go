@@ -1,8 +1,8 @@
 package domain
 
 type SellerMetrics struct {
-	SellerID      int
-	DeliveryHours float64
-	onTimeRate    float64
-	isBlocked     bool
+	SellerID         int
+	AvgDeliveryHours float64
+	OnTimeRate       float64
+	IsBlocked        bool
 }

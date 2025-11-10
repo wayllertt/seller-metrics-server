@@ -6,7 +6,7 @@ import (
 	"sync"
 	"time"
 
-	"seller-metrics/internal/domain"
+	"seller-metrics-server/internal/domain"
 )
 
 type SellerRepoMemory struct {

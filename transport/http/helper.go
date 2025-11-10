@@ -1,11 +1,11 @@
-package http
+package transporthttp
 
 import (
 	"encoding/json"
-	"net/http"
+	stdhttp "net/http"
 )
 
-func writeJSON(w http.ResponseWriter, v any) {
+func writeJSON(w stdhttp.ResponseWriter, v any) {
 	w.Header().Set("Content-Type", "application/json")
 	_ = json.NewEncoder(w).Encode(v)
 }
