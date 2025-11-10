@@ -9,6 +9,6 @@ type SellerRepository struct {
 }
 
 type OrderRepository struct {
-	GetBySellerId (ctx context.Context, sellerID int) ([]Order, error)
+	GetBySellerID (ctx context.Context, sellerID int) ([]Order, error)
 	Add (ctx context.Context, o Order) error
 }
